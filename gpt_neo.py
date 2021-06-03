@@ -4,7 +4,7 @@ from torch.utils.data import Dataset, random_split
 from transformers import GPT2Tokenizer, TrainingArguments, Trainer, GPTNeoForCausalLM
 
 torch.manual_seed(42)
-tokenizer = GPT2Tokenizer.from_pretrained("EleutherAI/gpt-neo-1.3B", bos_token='<|startoftext|>',
+tokenizer = GPT2Tokenizer.from_pretrained("EleutherAI/gpt-neo-1.3B", bos_token='<|endoftext|>',
                                           eos_token='<|endoftext|>', pad_token='<|pad|>')
 model = GPTNeoForCausalLM.from_pretrained("EleutherAI/gpt-neo-1.3B").cuda()
 model.resize_token_embeddings(len(tokenizer))
@@ -18,7 +18,7 @@ class NetflixDataset(Dataset):
         self.attn_masks = []
         self.labels = []
         for txt in txt_list:
-            encodings_dict = tokenizer('<|startoftext|>' + txt + '<|endoftext|>', truncation=True,
+            encodings_dict = tokenizer('<|endoftext|>' + txt + '<|endoftext|>', truncation=True,
                                        max_length=max_length, padding="max_length")
             self.input_ids.append(torch.tensor(encodings_dict['input_ids']))
             self.attn_masks.append(torch.tensor(encodings_dict['attention_mask']))
