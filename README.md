@@ -17,5 +17,5 @@ cd venv/bin
 ### GPU VRAM load during training
 <img src="https://raw.githubusercontent.com/dredwardhyde/gpt-neo-fine-tuning-example/main/gpu.png" width="737"/>  
 
-### Resilts  
+### Results  
 <img src="https://raw.githubusercontent.com/dredwardhyde/gpt-neo-fine-tuning-example/main/results.png" width="1000"/>  
