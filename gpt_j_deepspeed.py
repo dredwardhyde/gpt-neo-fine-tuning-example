@@ -1,4 +1,6 @@
 import os
+# Important: the following env vars is a hack to emulated distributed environment on a single GPU. Remove all of the env vars if you run 
+# with more than one GPU and the torch.distributed or the deepspeed launcher
 os.environ['MASTER_ADDR'] = 'localhost'
 os.environ['MASTER_PORT'] = '9994'
 os.environ['RANK'] = "0"
